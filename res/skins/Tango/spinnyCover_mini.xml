@@ -26,7 +26,7 @@ Variables:
             <Group><Variable name="group"/></Group>
             <PathBackground scalemode="STRETCH_ASPECT">graphics/spinnyMini_bg.svg</PathBackground>
             <PathForeground scalemode="STRETCH_ASPECT">graphics/spinnyMini_indicator.svg</PathForeground>
-            <PathMask scalemode="STRETCH_ASPECT">graphics/spinnyMini_<Variable name="chanNum"/>_mask.svg</PathMask>
+            <PathMask scalemode="STRETCH_ASPECT">graphics/spinnyMini_mask_<Variable name="chanNum"/>.svg</PathMask>
             <PathGhost scalemode="STRETCH_ASPECT">graphics/spinnyMini_indicator_ghost.svg</PathGhost>
             <ShowCover>false</ShowCover>
             <Connection>
@@ -43,7 +43,7 @@ Variables:
             <Group><Variable name="group"/></Group>
             <PathBackground scalemode="STRETCH_ASPECT">graphics/spinnyMini_bg.svg</PathBackground>
             <PathForeground scalemode="STRETCH_ASPECT">graphics/spinnyMini_indicator.svg</PathForeground>
-            <PathMask scalemode="STRETCH_ASPECT">graphics/spinnyMini_<Variable name="chanNum"/>_mask.svg</PathMask>
+            <PathMask scalemode="STRETCH_ASPECT">graphics/spinnyMini_mask_<Variable name="chanNum"/>.svg</PathMask>
             <PathGhost scalemode="STRETCH_ASPECT">graphics/spinnyMini_indicator_ghost.svg</PathGhost>
             <ShowCover>true</ShowCover>
             <Connection>
@@ -53,7 +53,7 @@ Variables:
           </Spinny>
         </Children>
         <Connection>
-          <ConfigKey persist="true">[Skin],show_spinnies</ConfigKey>
+          <ConfigKey persist="true">[Spinny],show_spinnies</ConfigKey>
           <BindProperty>visible</BindProperty>
         </Connection>
       </WidgetGroup>
@@ -77,7 +77,7 @@ Variables:
           </CoverArt>
         </Children>
         <Connection>
-          <ConfigKey persist="true">[Skin],show_spinnies</ConfigKey>
+          <ConfigKey persist="true">[Spinny],show_spinnies</ConfigKey>
           <Transform><Not/></Transform>
           <BindProperty>visible</BindProperty>
         </Connection>

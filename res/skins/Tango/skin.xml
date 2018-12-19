@@ -165,15 +165,15 @@
     <SetVariable name="PotiMinAngle">-130</SetVariable>
     <SetVariable name="PotiMaxAngle">130</SetVariable>
 
-    <SetVariable name="SignalBgColor_1">#001D33</SetVariable>
-    <SetVariable name="SignalBgColor_2">#001D33</SetVariable>
-    <SetVariable name="SignalBgColor_3">#3A0440</SetVariable>
-    <SetVariable name="SignalBgColor_4">#3A0440</SetVariable>
+    <SetVariable name="SignalBgColor_1">#3A0440</SetVariable>
+    <SetVariable name="SignalBgColor_2">#3A0440</SetVariable>
+    <SetVariable name="SignalBgColor_3">#001D33</SetVariable>
+    <SetVariable name="SignalBgColor_4">#001D33</SetVariable>
 
-    <SetVariable name="SignalColor_1">#5EBAFF</SetVariable>
-    <SetVariable name="SignalColor_2">#5EBAFF</SetVariable>
-    <SetVariable name="SignalColor_3">#DF4DF0</SetVariable>
-    <SetVariable name="SignalColor_4">#DF4DF0</SetVariable>
+    <SetVariable name="SignalColor_1">#DF4DF0</SetVariable>
+    <SetVariable name="SignalColor_2">#DF4DF0</SetVariable>
+    <SetVariable name="SignalColor_3">#5EBAFF</SetVariable>
+    <SetVariable name="SignalColor_4">#5EBAFF</SetVariable>
 
     <SetVariable name="SignalRGBLowColor">#ff2a00</SetVariable>
     <SetVariable name="SignalRGBMidColor">#33f600</SetVariable>
@@ -347,7 +347,15 @@
                               </Connection>
                             </WidgetGroup>
 
-                            <Template src="skin:sampler_rack.xml"/>
+                            <!-- I don't need samplers, so I replace them with 8 ''prep decks'.
+                                They are basically parking slots to keep tracks for later:
+                                - no Play button, cover art only
+                                - no Sync or other buttons,
+                                  just Title + Artist for maximum drag'n'drop area
+                                - no expanded view
+                                   -->
+                            <!--Template src="skin:sampler_rack.xml"/-->
+                            <Template src="skin:prep_rack.xml"/>
 
                             <Template src="skin:mic_aux_rack.xml"/>
 

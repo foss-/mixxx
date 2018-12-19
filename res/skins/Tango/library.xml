@@ -26,7 +26,7 @@ Description:
         <ObjectName>LibrarySplitter</ObjectName>
         <SizePolicy>me,me</SizePolicy>
         <SplitSizes>1,6</SplitSizes>
-        <SplitSizesConfigKey>[Skin],librarySidebar_splitsize</SplitSizesConfigKey>
+        <SplitSizesConfigKey>[Tango],splitter__tree_lib</SplitSizesConfigKey>
         <Orientation>horizontal</Orientation>
         <Collapsible>1,0</Collapsible>
         <Children>
@@ -50,7 +50,7 @@ Description:
                 <ObjectName>LibrarySplitter</ObjectName>
                 <SizePolicy>me,me</SizePolicy>
                 <SplitSizes>1,3</SplitSizes>
-                <SplitSizesConfigKey>[Skin],coverArt_splitsize</SplitSizesConfigKey>
+                <SplitSizesConfigKey>[Tango],splitter__coverArt_tree</SplitSizesConfigKey>
                 <Orientation>vertical</Orientation>
                 <Collapsible>0,0</Collapsible>
                 <Children>
@@ -102,5 +102,9 @@ Description:
       </Splitter><!-- /Split Tree / Tracks table -->
 
     </Children>
+    <Connection>
+      <ConfigKey persist="true">[Library],show_library</ConfigKey>
+      <BindProperty>visible</BindProperty>
+    </Connection>
   </WidgetGroup>
 </Template>
