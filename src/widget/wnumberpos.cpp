@@ -55,27 +55,27 @@ void WNumberPos::slotSetTimeElapsed(double dTimeElapsed) {
     if (m_displayMode == TrackTime::DisplayMode::Elapsed) {
         if (dTimeElapsed >= 0.0) {
             setText(mixxx::Duration::formatSeconds(
-                        dTimeElapsed, mixxx::Duration::Precision::CENTISECONDS));
+                        dTimeElapsed, mixxx::Duration::Precision::SECONDS));
         } else {
             setText(QLatin1String("-") % mixxx::Duration::formatSeconds(
-                        -dTimeElapsed, mixxx::Duration::Precision::CENTISECONDS));
+                        -dTimeElapsed, mixxx::Duration::Precision::SECONDS));
         }
     } else if (m_displayMode == TrackTime::DisplayMode::Remaining) {
         setText(QLatin1String("-") % mixxx::Duration::formatSeconds(
-                    dTimeRemaining, mixxx::Duration::Precision::CENTISECONDS));
+                    dTimeRemaining, mixxx::Duration::Precision::SECONDS));
     } else if (m_displayMode == TrackTime::DisplayMode::ElapsedAndRemaining) {
         if (dTimeElapsed >= 0.0) {
             setText(mixxx::Duration::formatSeconds(
-                        dTimeElapsed, mixxx::Duration::Precision::CENTISECONDS)
+                        dTimeElapsed, mixxx::Duration::Precision::SECONDS)
                     % QLatin1String("  -") %
                     mixxx::Duration::formatSeconds(
-                        dTimeRemaining, mixxx::Duration::Precision::CENTISECONDS));
+                        dTimeRemaining, mixxx::Duration::Precision::SECONDS));
         } else {
             setText(QLatin1String("-") % mixxx::Duration::formatSeconds(
-                        -dTimeElapsed, mixxx::Duration::Precision::CENTISECONDS)
+                        -dTimeElapsed, mixxx::Duration::Precision::SECONDS)
                     % QLatin1String("  -") %
                     mixxx::Duration::formatSeconds(
-                        dTimeRemaining, mixxx::Duration::Precision::CENTISECONDS));
+                        dTimeRemaining, mixxx::Duration::Precision::SECONDS));
         }
     }
     m_dOldTimeElapsed = dTimeElapsed;
