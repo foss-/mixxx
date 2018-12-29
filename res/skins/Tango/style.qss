@@ -1107,7 +1107,7 @@ WBeatSpinBox,
   }
   WBeatSpinBox:focus,
   #DlgAutoDJ QSpinBox:focus {
-    border-color: #d2d2d2;
+    border-color: #00ffff;
     color: #ccc;
   }
 
@@ -1514,7 +1514,7 @@ decks, samplers, mic, aux, fx */
   }
   #FxFlow_focus_background[highlight="1"] {
     background-color: transparent;
-  border-radius: 0px;
+    border-radius: 0px;
   }
 /* collapsed effect slots, horizontal layout */
 #FxFlow_mini_focus_separator1-2[highlight="0"],
@@ -2178,8 +2178,9 @@ QTreeView {
     New Library navigation COs only work if TreeView or TableView have focus.
     Clicking on buttons, sliders and visuals elsewhere removes focus from Library.
     In conjunction with [Library],MoveFocusBackward/..Forward, some highlight
-    helps a lot. */
-    border-color: #ff6600;
+    helps a lot.
+    border-color: #ff6600; */
+    border-color: #00ffff;
   }
 
 /*  Closed branch icon in tree */
@@ -2561,7 +2562,7 @@ WSearchLineEdit {
   selection-background-color: #d2d2d2;
   }
   WSearchLineEdit:focus {
-    border: 2px solid #ff6600;
+    border: 2px solid #00ffff;
     color: #eeeeee;
     padding: 2px;
   }
