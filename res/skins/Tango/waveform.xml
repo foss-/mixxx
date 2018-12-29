@@ -30,8 +30,9 @@ Variables:
         <SignalRGBMidColor><Variable name="SignalRGBMidColor"/></SignalRGBMidColor>
         <SignalRGBHighColor><Variable name="SignalRGBHighColor"/></SignalRGBHighColor>
         <BeatColor>#ffffff</BeatColor>
-        <PlayPosColor>#FF4300</PlayPosColor>
-        <EndOfTrackColor>#ff9900</EndOfTrackColor>
+        <PlayPosColor>#FF4300</PlayPosColor><!-- 
+        <EndOfTrackColor>#ff9900</EndOfTrackColor> -->
+        <EndOfTrackColor>#00ffff</EndOfTrackColor>
         <DefaultMark>
           <Align>bottom|right</Align>
           <Color>#00FF00</Color>
