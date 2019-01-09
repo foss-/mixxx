@@ -1015,6 +1015,7 @@ def BuildUbuntuPackage(target, source, env):
                 'optimize=portable',
                 'virtualize=0',
                 'mad=1',
+                'faad=1',
                 'localecompare=1',
                 'qt_sqlite_plugin=0',
                 'build=' + build.build,
