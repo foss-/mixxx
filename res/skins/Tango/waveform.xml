@@ -23,14 +23,16 @@ Variables:
         <ObjectName>Waveform</ObjectName>
         <Size>0me,22me</Size>
         <Channel><Variable name="chanNum"/></Channel>
-        <BgColor><Variable name="SignalBgColor"/></BgColor>
+        <BgColor><Variable name="SignalBgColor"/></BgColor><!-- 
+        <BgColor>#00000000</BgColor> -->
         <SignalColor><Variable name="SignalColor"/></SignalColor>
         <SignalRGBLowColor><Variable name="SignalRGBLowColor"/></SignalRGBLowColor>
         <SignalRGBMidColor><Variable name="SignalRGBMidColor"/></SignalRGBMidColor>
         <SignalRGBHighColor><Variable name="SignalRGBHighColor"/></SignalRGBHighColor>
         <BeatColor>#ffffff</BeatColor>
-        <PlayPosColor>#FF4300</PlayPosColor>
-        <EndOfTrackColor>#EA0085</EndOfTrackColor>
+        <PlayPosColor>#FF4300</PlayPosColor><!-- 
+        <EndOfTrackColor>#ff9900</EndOfTrackColor> -->
+        <EndOfTrackColor>#00ffff</EndOfTrackColor>
         <DefaultMark>
           <Align>bottom|right</Align>
           <Color>#00FF00</Color>

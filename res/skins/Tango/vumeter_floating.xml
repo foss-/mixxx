@@ -40,10 +40,10 @@ Refer to https://bugs.launchpad.net/mixxx/+bug/1759433
                     <PathVu>skin:/graphics/vumeter_floating_over.png</PathVu>
                     <PathBack>skin:/graphics/vumeter_floating.png</PathBack>
                     <Horizontal>false</Horizontal>
-                    <PeakHoldSize>4</PeakHoldSize>
-                    <PeakHoldTime>800</PeakHoldTime>
-                    <PeakFallTime>200</PeakFallTime>
-                    <PeakFallStep>5</PeakFallStep>
+                    <PeakHoldSize>3</PeakHoldSize>
+                    <PeakHoldTime>200</PeakHoldTime>
+                    <PeakFallTime>20</PeakFallTime>
+                    <PeakFallStep>50</PeakFallStep>
                     <Connection>
                       <ConfigKey><Variable name="group"/>,VuMeterL</ConfigKey>
                     </Connection>
@@ -67,10 +67,10 @@ Refer to https://bugs.launchpad.net/mixxx/+bug/1759433
                     <PathVu>skin:/graphics/vumeter_floating_over.png</PathVu>
                     <PathBack>skin:/graphics/vumeter_floating.png</PathBack>
                     <Horizontal>false</Horizontal>
-                    <PeakHoldSize>4</PeakHoldSize>
-                    <PeakHoldTime>800</PeakHoldTime>
-                    <PeakFallTime>200</PeakFallTime>
-                    <PeakFallStep>5</PeakFallStep>
+                    <PeakHoldSize>3</PeakHoldSize>
+                    <PeakHoldTime>200</PeakHoldTime>
+                    <PeakFallTime>20</PeakFallTime>
+                    <PeakFallStep>50</PeakFallStep>
                     <Connection>
                       <ConfigKey><Variable name="group"/>,VuMeterR</ConfigKey>
                     </Connection>

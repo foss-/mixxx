@@ -182,13 +182,13 @@ Variables:
                       <WidgetGroup><Size>1f,1min</Size></WidgetGroup>
                     </Children>
                     <Connection>
-                      <ConfigKey persist="true">[Skin],show_starrating</ConfigKey>
+                      <ConfigKey persist="true">[Tango],stars</ConfigKey>
                       <BindProperty>visible</BindProperty>
                     </Connection>
                   </WidgetGroup>
                 </Children>
                 <Connection>
-                  <ConfigKey>[Tango],starrating_fits</ConfigKey>
+                  <ConfigKey>[Tango],stars_fit</ConfigKey>
                   <BindProperty>visible</BindProperty>
                 </Connection>
               </WidgetGroup><!-- /Stars -->

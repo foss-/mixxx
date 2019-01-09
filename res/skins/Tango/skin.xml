@@ -116,6 +116,36 @@
     </attributes>
   </manifest>
 
+
+  <!--
+  **********************************************
+  General- Skin Colour Scheme
+  **********************************************
+  -->
+  <Schemes>
+    <Scheme>
+      <Name>Classic</Name>
+
+      <SetVariable name="SignalColor_12">#333333</SetVariable>
+      <SetVariable name="SignalBgColor_12">#ffffff</SetVariable>
+
+      <SetVariable name="SignalColor_34">#5EBAFF</SetVariable>
+      <SetVariable name="SignalBgColor_34">#ffffff</SetVariable>
+      <Filters/>
+    </Scheme>
+    <Scheme>
+      <Name>twist</Name><!-- 
+      <Style src="style-twist.qss"/> -->
+
+      <SetVariable name="SignalColor_12">#DF4DF0</SetVariable>
+      <SetVariable name="SignalBgColor_12">#3A0440</SetVariable>
+
+      <SetVariable name="SignalColor_34">#5EBAFF</SetVariable>
+      <SetVariable name="SignalBgColor_34">#001D33</SetVariable>
+      <Filters/>
+    </Scheme>
+  </Schemes>
+
   <ObjectName>Mixxx</ObjectName>
   <Style src="skin:style.qss" src-mac="skin:style-mac.qss"/>
   <MinimumSize>1008,500</MinimumSize>
@@ -165,15 +195,11 @@
     <SetVariable name="PotiMinAngle">-130</SetVariable>
     <SetVariable name="PotiMaxAngle">130</SetVariable>
 
-    <SetVariable name="SignalBgColor_1">#001D33</SetVariable>
-    <SetVariable name="SignalBgColor_2">#001D33</SetVariable>
-    <SetVariable name="SignalBgColor_3">#3A0440</SetVariable>
-    <SetVariable name="SignalBgColor_4">#3A0440</SetVariable>
+    <SetVariable name="SignalColor_12">#DF4DF0</SetVariable>
+    <SetVariable name="SignalBgColor_12">#3A0440</SetVariable>
 
-    <SetVariable name="SignalColor_1">#5EBAFF</SetVariable>
-    <SetVariable name="SignalColor_2">#5EBAFF</SetVariable>
-    <SetVariable name="SignalColor_3">#DF4DF0</SetVariable>
-    <SetVariable name="SignalColor_4">#DF4DF0</SetVariable>
+    <SetVariable name="SignalColor_34">#5EBAFF</SetVariable>
+    <SetVariable name="SignalBgColor_34">#001D33</SetVariable>
 
     <SetVariable name="SignalRGBLowColor">#ff2a00</SetVariable>
     <SetVariable name="SignalRGBMidColor">#33f600</SetVariable>
@@ -191,6 +217,86 @@
       </Children>
     </SingletonDefinition>
 
+    <!-- Overviews are needed in both regular and minmal decks -->
+    <SingletonDefinition>
+      <ObjectName>DeckOverviewSingleton1</ObjectName>
+      <Children>
+        <Template src="skin:deck_overview.xml">
+          <SetVariable name="chanNum">1</SetVariable>
+          <SetVariable name="SignalBgColor"><Variable name="SignalBgColor_12"/></SetVariable>
+          <SetVariable name="SignalColor"><Variable name="SignalColor_12"/></SetVariable>
+        </Template>
+      </Children>
+    </SingletonDefinition>
+
+    <SingletonDefinition>
+      <ObjectName>DeckOverviewSingleton2</ObjectName>
+      <Children>
+        <Template src="skin:deck_overview.xml">
+          <SetVariable name="chanNum">2</SetVariable>
+          <SetVariable name="SignalBgColor"><Variable name="SignalBgColor_12"/></SetVariable>
+          <SetVariable name="SignalColor"><Variable name="SignalColor_12"/></SetVariable>
+        </Template>
+      </Children>
+    </SingletonDefinition>
+
+    <SingletonDefinition>
+      <ObjectName>DeckOverviewSingleton3</ObjectName>
+      <Children>
+        <Template src="skin:deck_overview.xml">
+          <SetVariable name="chanNum">3</SetVariable>
+          <SetVariable name="SignalBgColor"><Variable name="SignalBgColor_34"/></SetVariable>
+          <SetVariable name="SignalColor"><Variable name="SignalColor_34"/></SetVariable>
+        </Template>
+      </Children>
+    </SingletonDefinition>
+
+    <SingletonDefinition>
+      <ObjectName>DeckOverviewSingleton4</ObjectName>
+      <Children>
+        <Template src="skin:deck_overview.xml">
+          <SetVariable name="chanNum">4</SetVariable>
+          <SetVariable name="SignalBgColor"><Variable name="SignalBgColor_34"/></SetVariable>
+          <SetVariable name="SignalColor"><Variable name="SignalColor_34"/></SetVariable>
+        </Template>
+      </Children>
+    </SingletonDefinition>
+
+    <SingletonDefinition>
+      <ObjectName>SpinnyCoverMini_Singleton1</ObjectName>
+      <Children>
+        <Template src="skin:spinny_cover_mini.xml">
+          <SetVariable name="chanNum">1</SetVariable>
+        </Template>
+      </Children>
+    </SingletonDefinition>
+
+    <SingletonDefinition>
+      <ObjectName>SpinnyCoverMini_Singleton2</ObjectName>
+      <Children>
+        <Template src="skin:spinny_cover_mini.xml">
+          <SetVariable name="chanNum">2</SetVariable>
+        </Template>
+      </Children>
+    </SingletonDefinition>
+
+    <SingletonDefinition>
+      <ObjectName>SpinnyCoverMini_Singleton3</ObjectName>
+      <Children>
+        <Template src="skin:spinny_cover_mini.xml">
+          <SetVariable name="chanNum">3</SetVariable>
+        </Template>
+      </Children>
+    </SingletonDefinition>
+
+    <SingletonDefinition>
+      <ObjectName>SpinnyCoverMini_Singleton4</ObjectName>
+      <Children>
+        <Template src="skin:spinny_cover_mini.xml">
+          <SetVariable name="chanNum">4</SetVariable>
+        </Template>
+      </Children>
+    </SingletonDefinition>
 
     <SingletonDefinition>
       <ObjectName>Library_Singleton</ObjectName>
@@ -347,7 +453,15 @@
                               </Connection>
                             </WidgetGroup>
 
-                            <Template src="skin:sampler_rack.xml"/>
+                            <!-- I don't need samplers, so I replace them with 8 ''prep decks'.
+                                They are basically parking slots to keep tracks for later:
+                                - no Play button, cover art only
+                                - no Sync or other buttons,
+                                  just Title + Artist for maximum drag'n'drop area
+                                - no expanded view
+                                   -->
+                            <!--Template src="skin:sampler_rack.xml"/-->
+                            <Template src="skin:prep_rack.xml"/>
 
                             <Template src="skin:mic_aux_rack.xml"/>
 
@@ -373,6 +487,51 @@
                   <Layout>vertical</Layout>
                   <SizePolicy>me,me</SizePolicy>
                   <Children>
+
+                <!-- Load scrolling waveforms Singleton here if the waveforms
+                    in the waveforms/decks Splitter are collapsed.
+                    Otherwise the end-of-track warning would not show up
+                    in overview waveforms. -->
+                    <WidgetGroup>
+                      <Layout>vertical</Layout>
+                      <Size>0me,0f</Size>
+                      <Children>
+                        <SingletonContainer>
+                          <ObjectName>Waveforms_Singleton</ObjectName>
+                        </SingletonContainer>
+                      </Children>
+                    </WidgetGroup>
+
+                    <WidgetGroup><!-- Minimal decks 1/2 -->
+                      <Layout>horizontal</Layout>
+                      <SizePolicy>me,max</SizePolicy>
+                      <Children>
+                        <Template src="skin:deck_left_mini.xml">
+                          <SetVariable name="chanNum">1</SetVariable>
+                        </Template>
+                        <Template src="skin:deck_right_mini.xml">
+                          <SetVariable name="chanNum">2</SetVariable>
+                        </Template>
+                      </Children>
+                    </WidgetGroup>
+
+                    <WidgetGroup><!-- Minimal decks 3/4 -->
+                      <Layout>horizontal</Layout>
+                      <SizePolicy>me,max</SizePolicy>
+                      <Children>
+                        <Template src="skin:deck_left_mini.xml">
+                          <SetVariable name="chanNum">3</SetVariable>
+                        </Template>
+                        <Template src="skin:deck_right_mini.xml">
+                          <SetVariable name="chanNum">4</SetVariable>
+                        </Template>
+                      </Children>
+                      <Connection>
+                        <ConfigKey>[Skin],show_4decks</ConfigKey>
+                        <BindProperty>visible</BindProperty>
+                      </Connection>
+                    </WidgetGroup>
+
                     <SingletonContainer>
                       <ObjectName>Library_Singleton</ObjectName>
                     </SingletonContainer>

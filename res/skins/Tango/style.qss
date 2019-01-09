@@ -98,34 +98,49 @@ WWidgetGroup {
 ####### Colors ##################################################
 ###############################################################*/
 
-#Deck1 WLabel,#RateContainer1 WLabel, #RateContainer1 WPushButton,
-#Deck2 WLabel, #RateContainer2 WLabel, #RateContainer2 WPushButton {
+#Deck1 WLabel,
+#Deck2 WLabel,
+#DeckMini1 WLabel,
+#DeckMini2 WLabel,
+#RateContainer1 WLabel,
+#RateContainer2 WLabel,
+#RateContainer1 WPushButton,
+#RateContainer2 WPushButton {
+  color: #e145f3;
+}
+#Deck3 WLabel,
+#Deck4 WLabel,
+#DeckMini3 WLabel,
+#DeckMini4 WLabel,
+#RateContainer3 WLabel,
+#RateContainer4 WLabel
+#RateContainer3 WPushButton,
+#RateContainer4 WPushButton {
   color: #33a8ff;
-}
-#Deck3 WLabel, #RateContainer3 WLabel, #RateContainer3 WPushButton,
-#Deck4 WLabel, #RateContainer4 WLabel, #RateContainer4 WPushButton {
-  color: #d910f0;
-}
-
-#WaveformContainer1,
-#WaveformContainer2 {
-  background-color: #001D33;
-}
-#WaveformContainer3,
-#WaveformContainer4 {
-  background-color: #3A0440;
 }
 
 /*	Define background-color here to make VinylToggler match
   the waveforms background-color.
   spinnyMini_Xmask.svg must match as well. */
-#DeckOverview1,
-#DeckOverview2 {
-  background-color: #001D33;
-}
-#DeckOverview3,
-#DeckOverview4 {
+#DeckOverviewRow1,
+#DeckOverviewRow2,
+#WaveformContainer1,
+#WaveformContainer2,
+#WaveformContainer1 WVisual,
+#WaveformContainer2 WVisual,
+#WaveformContainer1 WWaveformViewer,
+#WaveformContainer2 WWaveformViewer {
   background-color: #3A0440;
+}
+#DeckOverviewRow3,
+#DeckOverviewRow4,
+#WaveformContainer3,
+#WaveformContainer4,
+#WaveformContainer3 WVisual,
+#WaveformContainer4 WVisual,
+#WaveformContainer3 WWaveformViewer,
+#WaveformContainer4 WWaveformViewer {
+  background-color: #001D33;
 }
 
 
@@ -151,13 +166,13 @@ WWidgetGroup {
     border-radius:2px;
     margin-bottom: 4px;
     background-color: transparent;
-    image: url(skin:../Tango/buttons/btn_skinsettings_close.svg) no-repeat center top;
+    image: url(skin:../roTango/buttons/btn_skinsettings_close.svg) no-repeat center top;
     }
     #SkinSettingsClose:hover {
       border-radius:2px;
       margin-bottom: 4px;
       background-color: #0f0f0f;
-      image: url(skin:../Tango/buttons/btn_skinsettings_close_hover.svg) no-repeat center top;
+      image: url(skin:../roTango/buttons/btn_skinsettings_close_hover.svg) no-repeat center top;
     }
 
 #SkinSettingsCategory {
@@ -415,26 +430,31 @@ WWidgetGroup {
 #WaveformContainer1,
 #WaveformContainer2,
 #WaveformContainer3,
-#WaveformContainer4 {
+#WaveformContainer4,
+#WaveformContainer1 WVisual,
+#WaveformContainer2 WVisual,
+#WaveformContainer3 WVisual,
+#WaveformContainer4 WVisual,
+#WaveformContainer1 WWaveformViewer,
+#WaveformContainer2 WWaveformViewer,
+#WaveformContainer3 WWaveformViewer,
+#WaveformContainer4 WWaveformViewer,
+#Waveform,
+WWaveformViewer {
   qproperty-layoutAlignment: 'AlignVCenter';
-/* waveform play position should stay centered, so we shift the waveform
+/* [ronso0] deprecated:waveform play position should stay centered, so we shift the waveform
   containers right to compensate for (inactive) beatgrid button toggle
   margin-right: -17px; */
-}
-
-#BeatgridButtons {
-/* Those buttons are pushed outside the screen by 17px (see above),
-  so bring them back in
-  padding-right: 17px; */
-}
-#WaveformContainer1,
-#WaveformContainer2,
-#WaveformContainer3,
-#WaveformContainer4 {
-/* Note(ronso0):
+/* [ronso0] deprecated:
   this will shift waveforms' center position to the left.
   Useful to 'look ahead' further (who cares about history, ha?)
   margin-left: -350px;	*/
+}
+
+#BeatgridButtons {
+/* [ronso0] Those buttons are pushed outside the screen by 17px (see above),
+  so bring them back in
+  padding-right: 17px; */
 }
 
 #BeatgridButtonToggler {
@@ -570,13 +590,41 @@ WWidgetGroup {
 #Deck1,
 #Deck3,
 #Deck2,
-#Deck4 {
+#Deck4
+#DeckMini1,
+#DeckMini2,
+#DeckMini3,
+#DeckMini4 {
   background-color: #0f0f0f;
 }
 
 #DeckContainer {
   qproperty-layoutAlignment: 'AlignHCenter | AlignTop';
   padding-bottom: 5px;
+}
+
+#DeckMini1,
+#DeckMini3 {
+  qproperty-layoutAlignment: 'AlignHCenter | AlignTop';
+  margin: 0px 4px 5px 0px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+    background-color: #0f0f0f;
+}
+
+#DeckMini2,
+#DeckMini4 {
+  qproperty-layoutAlignment: 'AlignHCenter | AlignTop';
+  margin: 0px 0px 5px 4px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+#DeckMini_TitlePlayPosKeyBPM {
+  qproperty-layoutAlignment: 'AlignRight | AlignTop';
+  background-color: #333;
+  margin: 0px 1px 0px 1px;
+  padding: 1px 0px 1px 1px;
 }
 
 #DeckOverview {
@@ -699,28 +747,45 @@ WWidgetGroup {
     background-color: #333;
     }
 
+#DeckMini1 WLabel { /*
+  background-color: #121991;  */
+}
+
 #ArtistTitleTime {
   qproperty-layoutAlignment: 'AlignVCenter';
   background-color: #333;
   }
-  WLabel#PlayPosition, WLabel#TrackTitle {
+  #PlayPosition, #TrackTitle {
     font-size: 18px/18px;
     font-weight: bold;
     }
-  WLabel#Duration, WLabel#TrackBy, WLabel#TrackArtist {
+  #TrackTitleMini {
+    padding: 0px 0px 0px 1px;
+  }
+  #PlayPositionMini {
+    padding: 0px 1px 0px 0px;
+  }
+  #Duration, #TrackBy, #TrackArtist, #TrackTitleMini, #PlayPositionMini {
     font-size: 16px/16px;
     font-weight: bold;
+  }
+  #TrackArtist {
+    padding-top: 2px;
   }
   #PlayPositionHighlightContainer {
     /* Draw a border to emphasize that play position display can be changed
     to show both elapsed and remaining time */
-    padding: 0px 1px 0px 1px;
+    padding: 0px 2px 0px 2px;
+    border: 1px solid transparent;
     }
     #PlayPositionHighlightContainer:hover {
       border: 1px solid #ccc;
     }
-  WLabel#TrackBy {
+  WLabel#TrackBy, WLabel#TrackByMini {
     color: #888;
+  }
+  WLabel#TrackByMini {
+    padding: 2px 6px 0px 6px;
   }
   #LoopIndicator:hover {
     border: 1px solid #fff;
@@ -1042,7 +1107,7 @@ WBeatSpinBox,
   }
   WBeatSpinBox:focus,
   #DlgAutoDJ QSpinBox:focus {
-    border-color: #d2d2d2;
+    border-color: #00ffff;
     color: #ccc;
   }
 
@@ -1133,6 +1198,11 @@ WBeatSpinBox,
   text-align: center;
   padding-top: 1px;
   }
+#BpmLabelMini {
+  font-size: 16px/16px;
+  font-weight: bold;
+  padding: 1px 0px 0px 0px;
+  }
   #SyncButtonOverlay[displayValue="0"]:hover {
     image: url(skin:/buttons/btn_key_match_hover.svg) no-repeat center center;
     border: 1px solid #ff4800;
@@ -1176,9 +1246,14 @@ WBeatSpinBox,
       image: url(skin:/buttons/btn_rate_down_hover.svg) no-repeat center center;
     }
 
-  #KeyDisplay {
+  #KeyDisplay, #KeyDisplayMini {
     font-size: 14px/14px;
+  }
+  #KeyDisplay {
     padding: 0px;
+  }
+  #KeyDisplayMini {
+    padding: 0px 2px 0px 0px;
   }
   #KeyMatch {
     border: 1px solid #444;
@@ -1439,7 +1514,7 @@ decks, samplers, mic, aux, fx */
   }
   #FxFlow_focus_background[highlight="1"] {
     background-color: transparent;
-  border-radius: 0px;
+    border-radius: 0px;
   }
 /* collapsed effect slots, horizontal layout */
 #FxFlow_mini_focus_separator1-2[highlight="0"],
@@ -1891,20 +1966,10 @@ WTrackProperty#SamplerTitle_mini {
  ######  Spinnies  ##############################################
 ##############################################################*/
 
-#SpinnyCover_Container {
+#SpinnyCoverContainer {
   margin: 0px;
   padding: 0px;
   background-color: #1e1e1e;
-}
-
-#SpinnyCoverLeft {
-  qproperty-layoutAlignment: 'AlignRight';
-  margin-left: 3px;
-}
-
-#SpinnyCoverRight {
-  qproperty-layoutAlignment: 'AlignLeft';
-  margin-right: 3px;
 }
 
 #SpinnyMini {
@@ -2113,8 +2178,9 @@ QTreeView {
     New Library navigation COs only work if TreeView or TableView have focus.
     Clicking on buttons, sliders and visuals elsewhere removes focus from Library.
     In conjunction with [Library],MoveFocusBackward/..Forward, some highlight
-    helps a lot. */
-    border-color: #ff6600;
+    helps a lot.
+    border-color: #ff6600; */
+    border-color: #00ffff;
   }
 
 /*  Closed branch icon in tree */
@@ -2138,6 +2204,11 @@ QTreeView::branch:open:has-children:has-siblings {
     background-color: #333;
   }
 /* Text label of branch item */
+QTreeView::item {
+  border-left: 1px solid transparent;
+  border-radius: 1px;
+}
+
 QTreeView::item:selected {
   border-image: none;
   background-image: none;
@@ -2158,6 +2229,11 @@ QTreeView::item:!selected {
   background-image: none;
   background-color: #0f0f0f;
   color: #999;
+  }
+
+QTreeView::item:hover {
+  border: 1px solid #888;
+  background-color: #000;
   }
 
 QHeaderView {
@@ -2494,7 +2570,7 @@ WSearchLineEdit {
   selection-background-color: #d2d2d2;
   }
   WSearchLineEdit:focus {
-    border: 2px solid #ff6600;
+    border: 2px solid #00ffff;
     color: #eeeeee;
     padding: 2px;
   }

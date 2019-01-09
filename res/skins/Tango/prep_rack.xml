@@ -1,0 +1,62 @@
+<!DOCTYPE template>
+<!--
+  Description:
+    Sample deck container widget.
+-->
+<Template>
+  <WidgetGroup>
+    <Layout>vertical</Layout>
+    <!-- I don't now why this works but a WidgetGroup wrapper around a
+         WidgetStack with a 'fixed' size policy makes the group track the
+         minimum size of the current stack widget. -->
+    <SizePolicy>me,f</SizePolicy>
+    <Children>
+
+      <WidgetGroup>
+        <ObjectName>SamplerDecks</ObjectName>
+        <Layout>horizontal</Layout>
+        <SizePolicy>me,min</SizePolicy>
+        <Children>
+            <WidgetGroup><Size>1f,1min</Size></WidgetGroup>
+          <Template src="skin:prep_deck.xml">
+            <SetVariable name="samNum">1</SetVariable>
+          </Template>
+            <WidgetGroup><Size>5f,1min</Size></WidgetGroup>
+          <Template src="skin:prep_deck.xml">
+            <SetVariable name="samNum">2</SetVariable>
+          </Template>
+            <WidgetGroup><Size>5f,1min</Size></WidgetGroup>
+          <Template src="skin:prep_deck.xml">
+            <SetVariable name="samNum">3</SetVariable>
+          </Template>
+            <WidgetGroup><Size>5f,1min</Size></WidgetGroup>
+          <Template src="skin:prep_deck.xml">
+            <SetVariable name="samNum">4</SetVariable>
+          </Template>
+            <WidgetGroup><Size>5f,1min</Size></WidgetGroup>
+          <Template src="skin:prep_deck.xml">
+            <SetVariable name="samNum">5</SetVariable>
+          </Template>
+            <WidgetGroup><Size>5f,1min</Size></WidgetGroup>
+          <Template src="skin:prep_deck.xml">
+            <SetVariable name="samNum">6</SetVariable>
+          </Template>
+            <WidgetGroup><Size>5f,1min</Size></WidgetGroup>
+          <Template src="skin:prep_deck.xml">
+            <SetVariable name="samNum">7</SetVariable>
+          </Template>
+            <WidgetGroup><Size>5f,1min</Size></WidgetGroup>
+          <Template src="skin:prep_deck.xml">
+            <SetVariable name="samNum">8</SetVariable>
+          </Template>
+        </Children>
+      </WidgetGroup>
+
+    </Children>
+    <Connection>
+      <ConfigKey persist="true">[Samplers],show_samplers</ConfigKey>
+      <BindProperty>visible</BindProperty>
+    </Connection>
+  </WidgetGroup>
+</Template>
+
