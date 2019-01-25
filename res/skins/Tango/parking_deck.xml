@@ -1,0 +1,66 @@
+<!--
+Description:
+  Container for both minimal and full Sampler.
+  Play button and Cover Art are loaded as Singleton, they appear
+  in both minimal and full version.
+Variables:
+  samNum          : sampler deck number
+  row             : number of the parent sampler row, use for expand/collapse
+  PlayedOverlayColor  : defined in skin.xml
+-->
+<Template>
+  <SetVariable name="sourceType">sampler</SetVariable>
+  <SetVariable name="group">[Sampler<Variable name="samNum"/>]</SetVariable>
+
+  <WidgetGroup><!-- mini Sampler -->
+    <Layout>horizontal</Layout>
+    <ObjectName>SamplerDeck</ObjectName>
+    <SizePolicy>me,min</SizePolicy>
+    <Children>
+
+      <WidgetGroup><!-- Play/Cue + Cover-->
+        <ObjectName>SamplerPlayBox_mini</ObjectName>
+        <Layout>horizontal</Layout>
+        <Size>35f,34f</Size>
+        <Children>
+          <CoverArt>
+            <ObjectName>SamplerCover</ObjectName>
+            <Size>34f,34f</Size>
+            <Group><Variable name="group"/></Group>
+            <DefaultCover>graphics/blank_1x1.svg</DefaultCover>
+          </CoverArt>
+        </Children>
+      </WidgetGroup>
+
+      <WidgetGroup><!-- Title + Artist -->
+        <ObjectName>Spacer33</ObjectName>
+        <Layout>vertical</Layout>
+        <Size>84min,34f</Size>
+        <Children>
+
+          <!-- This spacer guarantees that all prep decks are equally wide
+              without being affected by full-width  artist/title labels. -->
+          <WidgetGroup><Size>82me,0f</Size></WidgetGroup>
+
+          <TrackProperty>
+            <ObjectName>SamplerTitle_mini</ObjectName>
+            <TooltipId>text</TooltipId>
+            <Size>i,17f</Size>
+            <Group><Variable name="group"/></Group>
+            <Property>title</Property>
+          </TrackProperty>
+
+          <TrackProperty>
+            <ObjectName>SamplerTitle_mini</ObjectName>
+            <TooltipId>text</TooltipId>
+            <Size>i,17f</Size>
+            <Group><Variable name="group"/></Group>
+            <Property>artist</Property>
+          </TrackProperty>
+
+        </Children>
+      </WidgetGroup><!-- /Title + [Sync, CF assign, Volume] -->
+
+    </Children>
+  </WidgetGroup>
+</Template>

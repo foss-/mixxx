@@ -404,7 +404,7 @@
                               </Connection>
                             </WidgetGroup>
 
-                            <Template src="skin:sampler_rack.xml"/>
+                            <Template src="skin:parking_deck_rack.xml"/>
 
                             <Template src="skin:mic_aux_rack.xml"/>
 
