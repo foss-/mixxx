@@ -22,6 +22,17 @@ class PortAudio(Dependence):
         return ['src/soundio/sounddeviceportaudio.cpp']
 
 
+class OSXFilePathUrlBackport(Dependence):
+
+    def configure(self, build, conf):
+        return
+
+    def sources(self, build):
+        if build.platform_is_osx:
+            return ['src/util/filepathurl.mm']
+        return []
+
+
 class PortMIDI(Dependence):
 
     def configure(self, build, conf):
@@ -91,6 +102,13 @@ class CoreServices(Dependence):
             return
         build.env.Append(CPPPATH='/System/Library/Frameworks/CoreServices.framework/Headers/')
         build.env.Append(LINKFLAGS='-framework CoreServices')
+
+class Foundation(Dependence):
+    def configure(self, build, conf):
+        if not build.platform_is_osx:
+            return
+        build.env.Append(CPPPATH='/System/Library/Frameworks/Foundation.framework/Headers/')
+        build.env.Append(LINKFLAGS='-framework Foundation')
 
 class IOKit(Dependence):
     """Used for battery measurements and controlling the screensaver on OS X and iOS."""
@@ -871,6 +889,7 @@ class MixxxCore(Feature):
                    "src/controllers/midi/midioutputhandler.cpp",
                    "src/controllers/softtakeover.cpp",
                    "src/controllers/keyboard/keyboardeventfilter.cpp",
+                   "src/controllers/colorjsproxy.cpp",
 
                    "src/main.cpp",
                    "src/mixxx.cpp",
@@ -1049,6 +1068,7 @@ class MixxxCore(Feature):
                    "src/library/bpmdelegate.cpp",
                    "src/library/previewbuttondelegate.cpp",
                    "src/library/coverartdelegate.cpp",
+                   "src/library/locationdelegate.cpp",
                    "src/library/tableitemdelegate.cpp",
 
                    "src/library/treeitemmodel.cpp",
@@ -1179,6 +1199,7 @@ class MixxxCore(Feature):
                    "src/util/statsmanager.cpp",
                    "src/util/stat.cpp",
                    "src/util/statmodel.cpp",
+                   "src/util/dnd.cpp",
                    "src/util/duration.cpp",
                    "src/util/time.cpp",
                    "src/util/timer.cpp",
@@ -1197,6 +1218,7 @@ class MixxxCore(Feature):
                    "src/util/tapfilter.cpp",
                    "src/util/movinginterquartilemean.cpp",
                    "src/util/console.cpp",
+                   "src/util/color/color.cpp",
                    "src/util/db/dbconnection.cpp",
                    "src/util/db/dbconnectionpool.cpp",
                    "src/util/db/dbconnectionpooler.cpp",
@@ -1224,6 +1246,7 @@ class MixxxCore(Feature):
                    "src/util/widgetrendertimer.cpp",
                    "src/util/workerthread.cpp",
                    "src/util/workerthreadscheduler.cpp",
+                   "src/util/color/predefinedcolor.cpp"
                    ]
 
         proto_args = {
@@ -1507,7 +1530,7 @@ class MixxxCore(Feature):
                 FidLib, SndFile, FLAC, OggVorbis, OpenGL, TagLib, ProtoBuf,
                 Chromaprint, RubberBand, SecurityFramework, CoreServices, IOKit,
                 QtScriptByteArray, Reverb, FpClassify, PortAudioRingBuffer, LAME,
-                QueenMaryDsp]
+                QueenMaryDsp, OSXFilePathUrlBackport]
 
     def post_dependency_check_configure(self, build, conf):
         """Sets up additional things in the Environment that must happen

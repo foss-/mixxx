@@ -42,6 +42,23 @@ Miscellaneous
   scrolling waveforms.
 * Support IRC/AIM/ICQ broadcast metadata.
 
+## [2.1.8](https://launchpad.net/mixxx/+milestone/2.1.8) (2019-04-07)
+
+* Fix a rare chance for a corrupt track file while writing metadata in out of disk situations. lp:1815305
+* Fix export of BPM track file metadata. lp:1816490
+* Fix export of BPM track file metadata. lp:1816490
+* Fix sending of broadcast metadata with TLS enabled libshout 2.4.1. lp:1817395
+* Fix resdicovering purged tracks in all cases. lp:1821514
+* Fix dropping track from OSX Finder. lp:1822424
+
+## [2.1.7](https://launchpad.net/mixxx/+milestone/2.1.7) (2019-01-15)
+
+* Fix syncing to doublespeed [lp:1808697](https://bugs.launchpad.net/mixxx/+bug/1808697)
+* Fix issues when changing beats of a synced track [lp:1808698](https://bugs.launchpad.net/mixxx/+bug/1808698)
+* Fix direction of pitch bend buttons when inverting rate slider [lp:1770745](https://bugs.launchpad.net/mixxx/+bug/1770745)
+* Use first loaded deck if no playing deck is found [lp:1784185](https://bugs.launchpad.net/mixxx/+bug/1784185)
+* Encode file names correctly on macOS [lp:1776949](https://bugs.launchpad.net/mixxx/+bug/1776949)
+
 ## [2.1.6](https://launchpad.net/mixxx/+milestone/2.1.6) (2018-12-23)
 
 * Fix crash when loading a Qt5 Soundsource / Vamp Plug-In. [lp:1774639](https://bugs.launchpad.net/mixxx/+bug/1774639)
@@ -55,7 +72,7 @@ Miscellaneous
 * Improve search bar timing. [lp:1635087](https://bugs.launchpad.net/mixxx/+bug/1635087)
 * Fix quoted search sentence. [lp:1784141](https://bugs.launchpad.net/mixxx/+bug/1784141)
 * Fix loading a track formerly not existing. [lp:1800395](https://bugs.launchpad.net/mixxx/+bug/1800395)
-* Fix imporing m3u files with blank lines. [lp:1806271](https://bugs.launchpad.net/mixxx/+bug/1806271)
+* Fix importing m3u files with blank lines. [lp:1806271](https://bugs.launchpad.net/mixxx/+bug/1806271)
 * Fix position in sampler overview waveforms. [lp:1744170](https://bugs.launchpad.net/mixxx/+bug/1744170)
 * Don't reset rate slider, syncing a track without a beatgrid. [lp:1783020](https://bugs.launchpad.net/mixxx/+bug/1783020)
 * Clean up iTunes track context menu. [lp:1800335](https://bugs.launchpad.net/mixxx/+bug/1800335)
