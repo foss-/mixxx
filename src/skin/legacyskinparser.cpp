@@ -125,7 +125,7 @@ ControlObject* controlFromConfigKey(const ConfigKey& key, bool bPersist,
     return controlButton;
 }
 
-ControlObject* LegacySkinParser::controlFromConfigNode(const QDomElement& element,
+QString* LegacySkinParser::controlFromConfigNode(const QDomElement& element,
                                                        const QString& nodeName,
                                                        bool* created) {
     QDomElement keyElement = m_pContext->selectElement(element, nodeName);
@@ -684,18 +684,20 @@ QWidget* LegacySkinParser::parseWidgetStack(const QDomElement& node) {
         prevConfigKey = pPrevControl->getKey();
     }
 
+    bool createdPrev = false;
+    ControlObject* pPrevControl = controlFromConfigNode(
+            node.toElement(), "PrevControl", &createdPrev);
+    ConfigKey prevConfigKey;
+    if (pPrevControl != nullptr) {
+        prevConfigKey = pPrevControl->getKey();
+    }
+
     bool createdCurrentPage = false;
-    ControlObject* pCurrentPageControl = NULL;
+    ControlObject* pCurrentPageControl = controlFromConfigNode(
+            node.toElement(), "CurrentPage", &createdCurrentPage);
     ConfigKey currentPageConfigKey;
-    QString currentpage_co = node.attribute("currentpage");
-    if (currentpage_co.length() > 0) {
-        ConfigKey configKey = ConfigKey::parseCommaSeparated(currentpage_co);
-        bool persist = m_pContext->selectAttributeBool(node, "persist", false);
-        pCurrentPageControl = controlFromConfigKey(configKey, persist,
-                                                   &createdCurrentPage);
-        if (pCurrentPageControl != nullptr) {
-            currentPageConfigKey = pCurrentPageControl->getKey();
-        }
+    if (pCurrentPageControl != nullptr) {
+        currentPageConfigKey = pCurrentPageControl->getKey();
     }
 
     WWidgetStack* pStack = new WWidgetStack(m_pParent, nextConfigKey,
@@ -751,29 +753,24 @@ QWidget* LegacySkinParser::parseWidgetStack(const QDomElement& node) {
                 continue;
             }
 
-            ControlObject* pControl = NULL;
-            QString trigger_configkey = element.attribute("trigger");
-            if (trigger_configkey.length() > 0) {
-                ConfigKey configKey = ConfigKey::parseCommaSeparated(trigger_configkey);
-                bool created;
-                pControl = controlFromConfigKey(configKey, false, &created);
-                if (pControl != nullptr && created) {
-                    // If we created the control, parent it to the child widget so
-                    // it doesn't leak.
-                    pControl->setParent(pChild);
-                }
-            }
-            int on_hide_select = -1;
-            QString on_hide_attr = element.attribute("on_hide_select");
-            if (on_hide_attr.length() > 0) {
-                bool ok = false;
-                on_hide_select = on_hide_attr.toInt(&ok);
-                if (!ok) {
-                    on_hide_select = -1;
-                }
+            ControlObject* pTriggerControl = NULL;
+            bool createdTrigger = false;
+            pTriggerControl = controlFromConfigNode(
+                    node.toElement(), "Trigger", &createdTrigger);
+            if (pTriggerControl != nullptr) {
+                // If we created the control, parent it to the child widget so
+                // it doesn't leak.
+                pTriggerControl->setParent(pChild);
             }
 
-            pStack->addWidgetWithControl(pChild, pControl, on_hide_select);
+            int onHideSelect = -1;
+            // add previous function as fallback if child has 'trigger' attribute
+            int onHideSelectString = m_pContext->selectInt(node, "OnHideSelect");
+            if (onHideSelectString == 0) {
+                onHideSelect = -1;
+            }
+
+            pStack->addWidgetWithControl(pChild, pTriggerControl, onHideSelect);
         }
     }
 
