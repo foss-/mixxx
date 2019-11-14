@@ -248,17 +248,6 @@ Variables:
         </Children>
       </WidgetGroup><!-- /Headphone + Super + Wet/Dry + FX label + expand toggle -->
 
-      <!-- If controller Fx controls are mapped with midi-components-0.0.js
-          this indicates wether this unit is currently accessible by controller -->
-      <WidgetGroup>
-        <ObjectName>FxControllerFocus</ObjectName>
-        <Size>10f,30f</Size>
-        <Connection>
-          <ConfigKey>[<Variable name="FxRack_FxUnit"/>],has_controller_focus</ConfigKey>
-          <BindProperty>visible</BindProperty>
-        </Connection>
-      </WidgetGroup>
-
       <WidgetGroup><!-- FX expand button + FX label -->
         <ObjectName>FxUnitControls</ObjectName>
         <Layout>vertical</Layout>

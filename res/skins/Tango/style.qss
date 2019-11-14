@@ -1629,10 +1629,6 @@ decks, samplers, mic, aux, fx */
       image: url(skin:/buttons/btn_fx_focus_on_hover.svg) no-repeat center center;
     }
 
-#FxControllerFocus {
-  background-color: green;
-}
-
 #FxMetaknob {
   /* Should shift Meta knob 2px down.
   Not working, although it works for Gain knob...
