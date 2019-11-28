@@ -465,6 +465,10 @@ void WTrackTableView::createActions(
     connect(m_pFileBrowserAct, SIGNAL(triggered()),
             this, SLOT(slotOpenInFileBrowser()));
 
+    m_pFileRemoveFromDiskAct = new QAction(tr("Remove from Disk"),this);
+    connect(m_pFileRemoveFromDiskAct,SIGNAL(triggered()),
+            this, SLOT(slotRemoveFromDisk()));
+
     m_pAutoDJBottomAct = new QAction(tr("Add to Auto DJ Queue (Bottom)"), this);
     connect(m_pAutoDJBottomAct, SIGNAL(triggered()),
             this, SLOT(slotSendToAutoDJBottom()));
@@ -683,6 +687,40 @@ void WTrackTableView::slotOpenInFileBrowser() {
         locations << trackModel->getTrackLocation(index);
     }
     mixxx::DesktopHelper::openInFileBrowser(locations);
+}
+
+void WTrackTableView::slotRemoveFromDisk() {
+       TrackModel* trackModel = getTrackModel();
+    if (!trackModel) {
+        return;
+    }
+    QMessageBox msgBox (QMessageBox::Information, QObject::tr("Remove From Disk"), QObject::tr("Really delete the files from disk? (Permanent Deletion)"));
+    QAbstractButton* pYES = (QAbstractButton*)msgBox.addButton(QMessageBox::Yes);
+    QAbstractButton* pNO  = (QAbstractButton*)msgBox.addButton(QMessageBox::No);
+    QCheckBox alsoHide(QObject::tr("Also hide track in library"), &msgBox);
+    alsoHide.blockSignals(true);
+    msgBox.addButton(&alsoHide, QMessageBox::ActionRole);
+
+    if (QMessageBox::Yes == msgBox.exec())
+    {
+
+
+        QModelIndexList indices = selectionModel()->selectedRows();
+
+        for (const QModelIndex& index : indices) {
+            if (!index.isValid()) {
+              continue;
+            }
+            QString  filenameWithPath = trackModel->getTrackLocation(index);
+            QFile file (filenameWithPath);
+            file.remove();
+
+        }
+        if( alsoHide.checkState() == Qt::Checked )
+        {
+            trackModel->hideTracks(indices);
+        }
+    }
 }
 
 void WTrackTableView::slotHide() {
@@ -1113,6 +1151,7 @@ void WTrackTableView::contextMenuEvent(QContextMenuEvent* event) {
         m_pMenu->addAction(m_pPurgeAct);
     }
     m_pMenu->addAction(m_pFileBrowserAct);
+    m_pMenu->addAction(m_pFileRemoveFromDiskAct);
 
     if (modelHasCapabilities(TrackModel::TRACKMODELCAPS_EDITMETADATA)) {
         m_pMenu->addSeparator();

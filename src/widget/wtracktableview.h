@@ -61,6 +61,7 @@ class WTrackTableView : public WLibraryTableView {
     void slotRemove();
     void slotHide();
     void slotOpenInFileBrowser();
+    void slotRemoveFromDisk();
     void slotShowTrackInfo();
     void slotShowDlgTagFetcher();
     void slotNextTrackInfo();
@@ -190,6 +191,8 @@ class WTrackTableView : public WLibraryTableView {
     QAction *m_pPropertiesAct;
     QAction *m_pFileBrowserAct;
 
+    // Remove from disk action
+    QAction *m_pFileRemoveFromDiskAct;
     // BPM feature
     QAction *m_pBpmLockAction;
     QAction *m_pBpmUnlockAction;
