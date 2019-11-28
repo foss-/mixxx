@@ -97,6 +97,10 @@ WWidgetGroup {
 WCueMenuPopup #CueRemoveButton {
   qproperty-icon: url(:/images/library/ic_library_cross.svg);
 }
+/* selected color */
+WColorPicker QPushButton:pressed {
+  background-image: url(skin:/buttons/btn_colorpicker_checkmark.svg) no-repeat center center;
+}
 
 /* ################################################################
 ####### Colors ##################################################
