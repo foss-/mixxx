@@ -5,8 +5,8 @@
 }
 
 #Mixxx, WWidget,
-WLabel, QLabel,
-WPushButton, QPushButton,
+WLabel, WLibrary QLabel,
+WPushButton, WLibrary QPushButton,
 WEffect, WEffectSelector,
 WBeatSpinBox,
 QSpinBox {
@@ -26,15 +26,10 @@ WBeatSpinBox,
 QSpinBox,
 /* Hotcue labels in the overview */
 WOverview,
-/* Edit label and pushbuttons in the hotcue label edit dialog */
-WOverview QLabel,
-WOverview QPushButton {
+/* 'Edit' label in the hotcue label edit dialog */
+WOverview QLabel {
   font-family: "Open Sans";
   text-transform: none;
-}
-WOverview QLabel,
-WOverview QPushButton {
-  font-weight: normal;
 }
 
 QToolTip {
@@ -47,7 +42,7 @@ QToolTip {
   border-radius: 2px;
 }
 
-WPushButton, QPushButton {
+WPushButton, WLibary QPushButton {
   font-size: 11px/12px;
 }
 
@@ -478,7 +473,7 @@ WOverview {
   color: #0bd9d1;
 }
 
-QLabel, QRadioButton,
+WLibary QLabel, WLibary QRadioButton,
 WSearchLineEdit,
 #LibraryBPMSpinBox,
 #LibraryBPMButton::item,
@@ -578,6 +573,16 @@ WTime {
     font-size: 10px/10px;
   }
 
+WCueMenuPopup #CueRemoveButton {
+  qproperty-icon: url(:/images/library/ic_library_cross.svg);
+}
+/* selected color */
+WColorPicker QPushButton:pressed {
+/* when setting a background-image the button suddenly gets a '3D' border.
+  'no-repeat' is not applied, so in order to show the icon only once it needs to be
+  approximately the size of the pushbutton [42 x 24 - 2 x 2px border width].  */
+  background-image: url(skin:/buttons/btn_colorpicker_checkmark.svg) no-repeat center center;
+}
 
 
 /********************** Decks **********************/

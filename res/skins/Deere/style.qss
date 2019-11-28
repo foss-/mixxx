@@ -789,7 +789,7 @@ QAbstractScrollArea::corner {
   background-color: #222;
 }
 
-WWidget, QLabel {
+WWidget, WLibrary QLabel {
   font-family: "Open Sans";
   font-size: 12px;
   text-transform: uppercase;
@@ -1733,6 +1733,14 @@ WPushButton[value="2"]:hover {
     background-color: #5F5F5F;
     border: 3px solid #0080BE;
     border-radius: 3px;
+}
+
+WCueMenuPopup #CueRemoveButton {
+  qproperty-icon: url(:/images/library/ic_library_cross.svg);
+}
+/* selected color */
+WColorPicker QPushButton:pressed {
+  background-image: url(skin:/icon/ic_colorpicker_checkmark.svg) no-repeat center center;
 }
 
 WRecordingDuration {
