@@ -12,6 +12,7 @@ WHotcueButton::WHotcueButton(const QString& group, QWidget* pParent)
           m_hotcue(Cue::kNoHotCue),
           m_hoverCueColor(false),
           m_pCoColor(nullptr),
+          m_cueColorDimThreshold(127),
           m_bCueColorDimmed(false),
           m_bCueColorIsLight(false),
           m_bCueColorIsDark(false) {
@@ -28,6 +29,7 @@ void WHotcueButton::setup(const QDomNode& node, const SkinContext& context) {
     } else {
         SKIN_WARNING(node, context) << "Hotcue value invalid";
     }
+    m_cueColorDimThreshold = context.selectInt(node, QStringLiteral("DimBrightThreshold"));
     m_hoverCueColor = context.selectBool(node, QStringLiteral("Hover"), false);
 
     m_pCueMenuPopup = make_parented<WCueMenuPopup>(context.getConfig(), this);
@@ -111,7 +113,7 @@ void WHotcueButton::slotColorChanged(double color) {
         return;
     }
     QColor cueColor = QColor::fromRgb(color);
-    m_bCueColorDimmed = Color::isDimColor(cueColor);
+    m_bCueColorDimmed = Color::isDimColorCustom(cueColor, m_cueColorDimThreshold);
 
     QString style =
             QStringLiteral("WWidget[displayValue=\"1\"] { background-color: ") +
