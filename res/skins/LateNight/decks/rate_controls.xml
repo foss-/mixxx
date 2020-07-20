@@ -89,96 +89,107 @@
 
           <WidgetGroup>
             <ObjectName>RateControls</ObjectName>
-            <SizePolicy>min,min</SizePolicy>
             <Layout>horizontal</Layout>
+            <SizePolicy>min,min</SizePolicy>
             <Children>
-              <WidgetGroup>
-                <ObjectName></ObjectName>
-                <Layout>vertical</Layout>
-                <SizePolicy>min,me</SizePolicy>
-                <Children>
-                  <RateRange>
-                    <TooltipId>rate_range_display</TooltipId>
-                    <ObjectName>RateRangeTop</ObjectName>
-                    <Channel><Variable name="ChanNum" /></Channel>
-                    <Position>Top</Position>
-                    <Display>prefix</Display>
-                  </RateRange>
-                  <WidgetGroup>
-                    <ObjectName></ObjectName>
-                    <SizePolicy>min,me</SizePolicy>
-                    <Layout>vertical</Layout>
-                  </WidgetGroup>
-                  <RateRange>
-                    <TooltipId>rate_range_display</TooltipId>
-                    <ObjectName>RateRangeBottom</ObjectName>
-                    <Channel><Variable name="ChanNum" /></Channel>
-                    <Position>Bottom</Position>
-                    <Display>prefix</Display>
-                  </RateRange>
-                </Children>
-              </WidgetGroup>
-              <WidgetGroup>
-                <ObjectName></ObjectName>
-                <Size>40f,113f</Size>
-                <Children>
-                  <Label>
-                    <ObjectName>RateCenter</ObjectName>
-                    <Size>5f,5f</Size>
-                    <Pos>2,55</Pos>
-                    <Connection>
-                      <ConfigKey><Variable name="Group"/>,rate</ConfigKey>
-                      <Transform><IsEqual>0.5</IsEqual></Transform>
-                      <BindProperty>highlight</BindProperty>
-                    </Connection>
-                  </Label>
-                  <SliderComposed>
-                    <ObjectName>RateSlider</ObjectName>
-                    <Size>40f,113f</Size>
-                    <Pos>5,0</Pos>
-                    <TooltipId>rate</TooltipId>
-                    <Handle scalemode="STRETCH_ASPECT">skin:/<Variable name="SliderScheme"/>/sliders/knob_pitch_deck.svg</Handle>
-                    <Slider scalemode="STRETCH_ASPECT">skin:/<Variable name="SliderScheme"/>/sliders/slider_pitch_deck.svg</Slider>
-                    <Horizontal>false</Horizontal>
-                    <BarWidth><Variable name="BarWidth"/></BarWidth>
-                    <BarMargins><Variable name="BarMarginPitch"/></BarMargins>
-                    <BarColor><Variable name="BarColorPitch"/>
-                    </BarColor><BarRoundCaps>true</BarRoundCaps>
-                    <BarAxisPos>20.0</BarAxisPos>
-                    <BarUnipolar>false</BarUnipolar>
-                    <Connection>
-                      <ConfigKey><Variable name="Group"/>,rate</ConfigKey>
-                    </Connection>
-                  </SliderComposed>
-                </Children>
-              </WidgetGroup>
 
-              <WidgetGroup>
-                <ObjectName></ObjectName>
-                <Layout>vertical</Layout>
-                <SizePolicy>min,me</SizePolicy>
+              <WidgetGroup><!-- Rate slider + range displays -->
+                <Layout>stacked</Layout>
+                <SizePolicy>max,me</SizePolicy>
                 <Children>
-                  <RateRange>
-                    <TooltipId>rate_range_display</TooltipId>
-                    <ObjectName>RateRangeTop</ObjectName>
-                    <Channel><Variable name="ChanNum" /></Channel>
-                    <Position>Top</Position>
-                    <Display>range</Display>
-                  </RateRange>
+
+                  <!-- Rate slider -->
                   <WidgetGroup>
-                    <ObjectName></ObjectName>
-                    <SizePolicy>min,me</SizePolicy>
-                    <Layout>vertical</Layout>
+                    <Size>45f,113f</Size>
+                    <Children>
+                      <Label>
+                        <ObjectName>RateCenter</ObjectName>
+                        <Size>5f,5f</Size>
+                        <Pos>2,55</Pos>
+                        <Connection>
+                          <ConfigKey><Variable name="Group"/>,rate</ConfigKey>
+                          <Transform><IsEqual>0.5</IsEqual></Transform>
+                          <BindProperty>highlight</BindProperty>
+                        </Connection>
+                      </Label>
+                      <SliderComposed>
+                        <ObjectName>RateSlider</ObjectName>
+                        <Size>40f,113f</Size>
+                        <Pos>5,0</Pos>
+                        <TooltipId>rate</TooltipId>
+                        <Handle scalemode="STRETCH_ASPECT">skin:/<Variable name="SliderScheme"/>/sliders/knob_pitch_deck.svg</Handle>
+                        <Slider scalemode="STRETCH_ASPECT">skin:/<Variable name="SliderScheme"/>/sliders/slider_pitch_deck.svg</Slider>
+                        <Horizontal>false</Horizontal>
+                        <BarWidth><Variable name="BarWidth"/></BarWidth>
+                        <BarMargins><Variable name="BarMarginPitch"/></BarMargins>
+                        <BarColor><Variable name="BarColorPitch"/>
+                        </BarColor><BarRoundCaps>true</BarRoundCaps>
+                        <BarAxisPos>20.0</BarAxisPos>
+                        <BarUnipolar>false</BarUnipolar>
+                        <Connection>
+                          <ConfigKey><Variable name="Group"/>,rate</ConfigKey>
+                        </Connection>
+                      </SliderComposed>
+                    </Children>
                   </WidgetGroup>
-                  <RateRange>
-                    <TooltipId>rate_range_display</TooltipId>
-                    <ObjectName>RateRangeBottom</ObjectName>
-                    <Channel><Variable name="ChanNum" /></Channel>
-                    <Position>Bottom</Position>
-                    <Display>range</Display>
-                  </RateRange>
+
+                  <WidgetGroup><!-- Pitch range indicators: prefix / spacer / range number -->
+                    <Layout>horizontal</Layout>
+                    <SizePolicy>min,me</SizePolicy>
+                    <Children>
+                      <WidgetGroup><Size>3f,0me</Size></WidgetGroup>
+
+                      <!-- range direction prefixes -->
+                      <WidgetGroup>
+                        <Layout>vertical</Layout>
+                        <SizePolicy>min,me</SizePolicy>
+                        <Children>
+                          <RateRange>
+                            <TooltipId>rate_range_display</TooltipId>
+                            <ObjectName>RateDisplayTop</ObjectName>
+                            <Channel><Variable name="ChanNum" /></Channel>
+                            <Position>Top</Position>
+                            <Display>prefix</Display>
+                          </RateRange>
+                          <WidgetGroup><Size>0min,0me</Size></WidgetGroup>
+                          <RateRange>
+                            <TooltipId>rate_range_display</TooltipId>
+                            <ObjectName>RateDisplayBottom</ObjectName>
+                            <Channel><Variable name="ChanNum" /></Channel>
+                            <Position>Bottom</Position>
+                            <Display>prefix</Display>
+                          </RateRange>
+                        </Children>
+                      </WidgetGroup>
+
+                      <WidgetGroup><Size>25f,0me</Size></WidgetGroup>
+
+                      <!-- range direction numbers -->
+                      <WidgetGroup>
+                        <Layout>vertical</Layout>
+                        <SizePolicy>min,me</SizePolicy>
+                        <Children>
+                          <RateRange>
+                            <TooltipId>rate_range_display</TooltipId>
+                            <ObjectName>RateDisplayTop</ObjectName>
+                            <Channel><Variable name="ChanNum" /></Channel>
+                            <Position>Top</Position>
+                            <Display>range</Display>
+                          </RateRange>
+                          <WidgetGroup><Size>0min,0me</Size></WidgetGroup>
+                          <RateRange>
+                            <TooltipId>rate_range_display</TooltipId>
+                            <ObjectName>RateDisplayBottom</ObjectName>
+                            <Channel><Variable name="ChanNum" /></Channel>
+                            <Position>Bottom</Position>
+                            <Display>range</Display>
+                          </RateRange>
+                        </Children>
+                      </WidgetGroup>
+                    </Children>
+                  </WidgetGroup><!-- Pitch range indicators: prefix / spacer / range number -->
                 </Children>
-              </WidgetGroup>
+              </WidgetGroup><!-- Rate slider + range displays -->
 
               <WidgetGroup><!-- RateButtons for different rate directions -->
                 <ObjectName>RateButtons</ObjectName>
