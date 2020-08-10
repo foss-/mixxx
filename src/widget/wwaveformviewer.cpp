@@ -27,7 +27,8 @@ WWaveformViewer::WWaveformViewer(
           m_bScratching(false),
           m_bBending(false),
           m_pCueMenuPopup(make_parented<WCueMenuPopup>(pConfig, this)),
-          m_waveformWidget(nullptr) {
+          m_waveformWidget(nullptr),
+          m_dimBrightTreshold(127) {
     setMouseTracking(true);
     setAcceptDrops(true);
     m_pZoom = new ControlProxy(group, "waveform_zoom", this, ControlFlag::NoAssertIfMissing);
@@ -52,6 +53,7 @@ void WWaveformViewer::setup(const QDomNode& node, const SkinContext& context) {
     if (m_waveformWidget) {
         m_waveformWidget->setup(node, context);
     }
+    m_dimBrightTreshold = m_waveformWidget->getDimBrightThreshold();
 }
 
 void WWaveformViewer::resizeEvent(QResizeEvent* /*event*/) {
@@ -272,13 +274,14 @@ CuePointer WWaveformViewer::getCuePointerFromCueMark(WaveformMarkPointer pMark) 
 }
 
 void WWaveformViewer::highlightMark(WaveformMarkPointer pMark) {
-    QColor highlightColor = Color::chooseContrastColor(pMark->fillColor());
-    pMark->setBaseColor(highlightColor);
+    QColor highlightColor = Color::chooseContrastColor(pMark->fillColor(),
+            m_dimBrightTreshold);
+    pMark->setBaseColor(highlightColor, m_dimBrightTreshold);
 }
 
 void WWaveformViewer::unhighlightMark(WaveformMarkPointer pMark) {
     QColor originalColor = mixxx::RgbColor::toQColor(getCuePointerFromCueMark(pMark)->getColor());
-    pMark->setBaseColor(originalColor);
+    pMark->setBaseColor(originalColor, m_dimBrightTreshold);
 }
 
 bool WWaveformViewer::isPlaying() const {

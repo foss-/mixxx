@@ -76,6 +76,7 @@ bool WaveformSignalColors::setup(const QDomNode &node, const SkinContext& contex
     }
     m_bgColor = WSkinColor::getCorrectColor(m_bgColor).toRgb();
 
+    m_dimBrightThreshold = context.selectInt(node, QStringLiteral("DimBrightThreshold"));
     bool filteredColorValid = m_lowColor.isValid() && m_midColor.isValid() && m_highColor.isValid();
 
     if (m_signalColor.isValid() && filteredColorValid) {

@@ -17,6 +17,7 @@ const double WaveformWidgetRenderer::s_defaultPlayMarkerPosition = 0.5;
 WaveformWidgetRenderer::WaveformWidgetRenderer(const QString& group)
         : m_group(group),
           m_orientation(Qt::Horizontal),
+          m_dimBrightTreshold(127),
           m_height(-1),
           m_width(-1),
           m_devicePixelRatio(1.0f),
@@ -261,6 +262,8 @@ void WaveformWidgetRenderer::setup(
     } else {
         m_orientation = Qt::Horizontal;
     }
+
+    m_dimBrightTreshold = context.selectInt(node, QStringLiteral("DimBrightThreshold"));
 
     m_colors.setup(node, context);
     for (int i = 0; i < m_rendererStack.size(); ++i) {

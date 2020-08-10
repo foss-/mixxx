@@ -150,6 +150,8 @@ void WOverview::setup(const QDomNode& node, const SkinContext& context) {
 
     m_passthroughOverlayColor = m_signalColors.getPlayedOverlayColor();
 
+    m_dimBrightThreshold = m_signalColors.getDimBrightThreshold();
+
     // setup hotcues and cue and loop(s)
     m_marks.setup(m_group, node, context, m_signalColors);
 
@@ -387,7 +389,7 @@ void WOverview::updateCues(const QList<CuePointer> &loadedCues) {
             && pMark->getSamplePosition() != Cue::kNoPosition) {
             QColor newColor = mixxx::RgbColor::toQColor(currentCue->getColor());
             if (newColor != pMark->fillColor() || newColor != pMark->m_textColor) {
-                pMark->setBaseColor(newColor);
+                pMark->setBaseColor(newColor, m_dimBrightThreshold);
             }
 
             int hotcueNumber = currentCue->getHotCue();
