@@ -142,6 +142,14 @@
       <SetVariable name="SignalRGBMidColor">#102800</SetVariable>
       <SetVariable name="SignalRGBLowColor">#3c0000</SetVariable>
     -->
+      <!-- This set the threshold when to detect cue colors dark or bright:
+      * waveform: font color for the marks, highlight color when clicked
+      * overview: contrast color of mark border lines
+      * hotcue buttons: dark/bright icon (in other skins: font color, hover color) -->
+      <SetVariable name="DimBrightThresholdOverview">127</SetVariable>
+      <SetVariable name="DimBrightThresholdWaveform">80</SetVariable>
+      <SetVariable name="DimBrightThresholdHotcueBtn">80</SetVariable>
+
       <SetVariable name="SignalRGBHighColor">#332acc</SetVariable>
       <SetVariable name="SignalRGBMidColor">#33f600</SetVariable>
       <SetVariable name="SignalRGBLowColor">#ff2a00</SetVariable>
@@ -162,9 +170,9 @@
 
       <!-- Set the button type
         * elevated: buttons stand out, have a 3D border and a drop shadow
-        * embedded: buttons are domed and seem leveled with surface, and they have surrounding groove
-        In PaleMoon there's only the _embedded_ style set -->
-      <!-- Buttons in top-level containers like mixer, rate controls, collapsed FxUnits etc. -->
+        * embedded: buttons are domed and seem leveled with surface, and
+                    they have surrounding groove -->
+      <!-- Buttons in top-level containers like mixer, rate controls, FxUnits etc. -->
       <SetVariable name="TopRegion_BtnType">embedded</SetVariable>
       <!-- Buttons in subregions like transport row, mic/aux units etc. -->
       <SetVariable name="SubRegion_BtnType">embedded</SetVariable>
@@ -249,6 +257,11 @@
       <SetVariable name="BeatColor">#ffffff</SetVariable>
       <SetVariable name="PlayPosColor">#00c8ff</SetVariable>
       <SetVariable name="CueColor">#ff001c</SetVariable>
+      <!-- Set the default 127 for dim/bright threshold because with empty
+          value it would be set to 0. -->
+      <SetVariable name="DimBrightThresholdOverview">127</SetVariable>
+      <SetVariable name="DimBrightThresholdWaveform">127</SetVariable>
+      <SetVariable name="DimBrightThresholdHotcueBtn">127</SetVariable>
       <SetVariable name="LoopColor">#00ff00</SetVariable>
       <SetVariable name="IntroOutroColor">#0000ff</SetVariable>
       <SetVariable name="PlayedOverlayColor">#bb000000</SetVariable>
