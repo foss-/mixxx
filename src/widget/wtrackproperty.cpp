@@ -7,7 +7,7 @@
 #include "util/dnd.h"
 
 namespace {
-const WTrackMenu::Features trackMenuFeatures =
+const WTrackMenu::Features kTrackMenuFeatures =
         //WTrackMenu::Feature::Playlist |
         //WTrackMenu::Feature::Crate |
         //WTrackMenu::Feature::Metadata |
@@ -30,7 +30,7 @@ WTrackProperty::WTrackProperty(
           m_group(group),
           m_pConfig(pConfig),
           m_pTrackMenu(make_parented<WTrackMenu>(
-                  this, pConfig, pTrackCollectionManager, trackMenuFeatures)) {
+                  this, pConfig, pTrackCollectionManager, kTrackMenuFeatures)) {
     setAcceptDrops(true);
 }
 
