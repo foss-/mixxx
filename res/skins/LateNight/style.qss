@@ -861,3 +861,7 @@ WLibrary QRadioButton {
 #Border58 {
   border: 1px solid #585858;
 }
+
+QTableView::item:focus {
+  border: 2px solid red;
+}
