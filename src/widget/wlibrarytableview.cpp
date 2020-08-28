@@ -148,3 +148,23 @@ void WLibraryTableView::setSelectedClick(bool enable) {
         setEditTriggers(QAbstractItemView::EditKeyPressed);
     }
 }
+
+bool WLibraryTableView::event(QEvent* e) {
+    // On FocusIn, make sure there is always a track selected which can then
+    // instantly be loaded to a deck.
+    // Benefits: with no previous selection the first item is automatically
+    // selected without having to move down and up again first with up/down
+    // button presses sent by keyboard or emulated by [Library],MoveVertical.
+    // Second benefit: if the table has only one track, previously one could not
+    // select it with [Library],MoveVertical. fixes lp:1808632
+    if (e->type() == QEvent::FocusIn && model()->rowCount() > 0) {
+        int currRow = currentIndex().row();
+        if (currRow == -1) {
+            selectRow(0);
+        } else if (currRow != -1 && selectionModel()->selectedRows().isEmpty()) {
+            selectRow(currRow);
+        }
+    }
+
+    return QTableView::event(e);
+}
