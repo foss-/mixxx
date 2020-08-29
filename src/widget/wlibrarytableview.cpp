@@ -161,6 +161,8 @@ bool WLibraryTableView::event(QEvent* e) {
         int currRow = currentIndex().row();
         if (currRow == -1) {
             selectRow(0);
+        // This creates a (single) selection from the previously focused item in
+        // case a single table item was deselected previously.
         } else if (currRow != -1 && selectionModel()->selectedRows().isEmpty()) {
             selectRow(currRow);
         }
