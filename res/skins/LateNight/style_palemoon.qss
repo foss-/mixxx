@@ -3061,3 +3061,19 @@ WEffectSelector,
     }
 /************** common styles for WEffectSelector ******************************
 *************** QSpinBox, QMenu, QToolTip *************************************/
+
+#DeckSettingsContainer, #DeckSettingsContainerCompact {
+  background-color: yellow;
+}
+
+#DeckSettings {
+  background-color: orange;
+}
+
+#Stars {
+  background-color: red;
+}
+
+WStarRating {
+  background-color: #000;
+}
